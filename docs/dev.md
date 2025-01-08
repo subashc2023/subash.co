@@ -18,7 +18,7 @@ export const siteConfig = {
   email: "subashc2023@gmail.com", // Contact email
 
   // Site Info
-  url: "https://subash.us",      // Your domain - update this when changing domains
+  url: "https://subash.co",      // Your domain - update this when changing domains
   description: "...",            // Short description
   longDescription: "...",        // Detailed description for SEO
 

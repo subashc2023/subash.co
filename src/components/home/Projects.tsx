@@ -3,16 +3,16 @@ import { Github } from "lucide-react"
 
 const projects = [
   {
-    title: "subash.us",
-    url: "subash.us",
-    description: "(This website)",
-    link: "https://subash.us",
-    github: "https://github.com/subashc2023/subash.us",
+    title: "subash.co",
+    url: "subash.co",
+    description: "Personal website built with Next.js and Tailwind CSS",
+    link: "https://subash.co",
+    github: "https://github.com/subashc2023/subash.co",
     tech: ["Next.js", "TypeScript", "Tailwind CSS", "Shadcn UI"]
   },
   {
     title: "Tides of Change",
-    url: "cleanup.subash.us",
+    url: "cleanup.subash.co",
     description: "An interactive visualization tool for exploring scenarios around ocean plastic waste cleanup efforts. Simulates cleanup budgets, costs, and timelines to understand potential trajectories for addressing global plastic pollution.",
     link: "https://ocean-cleanup-simulator.vercel.app",
     github: "https://github.com/subashc2023/ocean-cleanup-simulator",

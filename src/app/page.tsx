@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: 'Subash Chandra - Portfolio',
   description: 'Welcome to my portfolio - Technical Product Associate & Data Domain Architect',
   alternates: {
-    canonical: 'https://subash.us'
+    canonical: 'https://subash.co'
   }
 };
 

@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Subash Chandra's Portfolio Website
 
-## Getting Started
+Welcome to my personal portfolio website repository! This site showcases my professional experience, skills, and projects as a Technical Product Associate & Data Domain Architect at J.P. Morgan Chase.
 
-First, run the development server:
+🌐 **Live Site**: [subash.co](https://subash.co)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🛠️ Tech Stack
+
+- **Framework**: [Next.js 15](https://nextjs.org/) with TypeScript
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **UI Components**: [Shadcn UI](https://ui.shadcn.com/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Theme**: Dark/Light mode support using [next-themes](https://github.com/pacocoursey/next-themes)
+- **Email**: [Resend](https://resend.com/) for contact form functionality
+
+## ✨ Features
+
+- Responsive design that works on all devices
+- Dark/Light theme support
+- SEO optimized with meta tags and sitemap
+- Fast page loads with Next.js optimizations
+- Interactive project showcase
+- Professional experience timeline
+- Skills and certifications display
+- Contact form with email integration
+- Modern UI with smooth animations
+
+## 🚀 Getting Started
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/subashc2023/subash.co.git
+   cd subash.co
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Run the development server**
+   ```bash
+   npm run dev
+   ```
+
+4. **Open [http://localhost:3000](http://localhost:3000) in your browser**
+
+## 📁 Project Structure
+
+```
+src/
+├── app/                    # Next.js app router pages
+├── components/
+│   ├── home/              # Main page components
+│   └── theme/             # Theme components
+├── config/
+│   └── site.ts            # Central configuration
+└── types/                 # TypeScript type definitions
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🔧 Configuration
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+All site-wide configurations are centralized in `src/config/site.ts`. Update this file to modify:
+- Personal information
+- Social links
+- SEO metadata
+- Theme preferences
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📝 Development
 
-## Learn More
+- Run `npm run dev` for development with hot-reload
+- Run `npm run build` to create a production build
+- Run `npm run start` to start the production server
+- Run `npm run lint` to check for code style issues
 
-To learn more about Next.js, take a look at the following resources:
+## 📄 License
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This project is open source and available under the [MIT License](LICENSE).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📧 Contact
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Email: subashc2023@gmail.com
+- LinkedIn: [subashchandra2023](https://www.linkedin.com/in/subashchandra2023/)
+- GitHub: [subashc2023](https://github.com/subashc2023)

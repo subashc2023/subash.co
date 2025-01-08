@@ -9,7 +9,7 @@ export const siteConfig = {
   email: "subashc2023@gmail.com",
 
   // Site Info
-  url: "https://subash.us",
+  url: "https://subash.co",
   description: "Technical Product Associate & Data Domain Architect at J.P. Morgan Chase",
   longDescription: "Personal website of Subash Chandra, a Technical Product Associate and Data Domain Architect at J.P. Morgan Chase. Experienced in Cloud Engineering, AWS, Python, and Data Architecture.",
   

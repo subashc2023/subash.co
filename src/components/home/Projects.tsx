@@ -23,7 +23,7 @@ const projects = [
 export function Projects() {
   return (
     <section id="projects" className="py-20">
-      <div className="container px-4 mx-auto max-w-5xl">
+      <div className="container px-4 mx-auto max-w-6xl">
         <h2 className="text-3xl font-bold mb-16 text-center">Projects</h2>
         <div className="space-y-8">
           {projects.map((project) => (

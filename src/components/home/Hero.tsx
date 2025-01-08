@@ -9,11 +9,10 @@ export default function Hero() {
   const scrollToSkills = () => {
     const element = document.querySelector('#skills')
     if (element) {
-      const elementRect = element.getBoundingClientRect()
-      const absoluteElementTop = elementRect.top + window.pageYOffset
-      const middle = absoluteElementTop - (window.innerHeight / 2) + (elementRect.height / 2)
+      const headerOffset = 80 // Account for the fixed navbar
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
       window.scrollTo({
-        top: middle,
+        top: elementPosition - headerOffset,
         behavior: 'smooth'
       })
     }
@@ -59,8 +58,7 @@ export default function Hero() {
               <div>
                 <h2 className="text-2xl font-semibold mb-4">Biography</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                A Computer Science graduate passionate about automation and cloud infrastructure. Specializing in AWS, Python, and modern DevOps practices, I bring a problem-solving mindset to every challenge. 
-                I believe in collaborative development - where varying perspectives lead to better solutions. Always seeking ways to optimize and enhance existing systems while maintaining scalability and reliability.
+                A dedicated and analytical engineering professional specializing in Cloud Engineering and Data Architecture. With expertise in AWS, Python, and modern DevOps practices, I focus on implementing technical solutions that enhance data management and system effectiveness. Certified in AWS and Apache Kafka, I excel in automating complex tasks and optimizing data workflows while maintaining high standards of reliability and security. Always seeking ways to transform technical challenges into streamlined, efficient processes that drive business value. My approach emphasizes collaborative development, where diverse perspectives lead to more robust and innovative solutions.
                 </p>
               </div>
               
@@ -101,10 +99,10 @@ export default function Hero() {
       {/* Scroll Indicator */}
       <button
         onClick={scrollToSkills}
-        className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+        className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted-foreground hover:text-foreground transition-colors p-8"
         aria-label="Scroll to skills section"
       >
-        <ChevronDown className="w-6 h-6 animate-bounce" />
+        <ChevronDown className="w-12 h-12 animate-[bounce_2s_ease-in-out_infinite]" />
       </button>
     </section>
   )

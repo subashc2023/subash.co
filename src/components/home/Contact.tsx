@@ -7,6 +7,7 @@ interface FormState {
   name: string
   email: string
   message: string
+  subject: string
 }
 
 interface FormStatus {
@@ -20,6 +21,7 @@ export function Contact() {
     name: "",
     email: "",
     message: "",
+    subject: "",
   })
 
   const [status, setStatus] = useState<FormStatus>({
@@ -48,7 +50,7 @@ export function Contact() {
       }
 
       setStatus({ isSubmitting: false, isSuccess: true, error: null })
-      setFormData({ name: "", email: "", message: "" }) // Reset form
+      setFormData({ name: "", email: "", message: "", subject: "" }) // Reset form
       
       // Reset success message after 5 seconds
       setTimeout(() => {
@@ -67,9 +69,9 @@ export function Contact() {
     <section id="contact" className="py-32">
       <div className="container px-4">
         <h2 className="text-4xl font-bold mb-20 text-center">Contact</h2>
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <form onSubmit={handleSubmit} className="space-y-8">
-            <div className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="space-y-2">
                 <label htmlFor="name" className="text-sm font-medium">
                   Name
@@ -98,6 +100,23 @@ export function Contact() {
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   className="w-full rounded-md border bg-background px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-primary/50"
                   placeholder="your.email@example.com"
+                  required
+                  aria-required="true"
+                  disabled={status.isSubmitting}
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label htmlFor="subject" className="text-sm font-medium">
+                  Subject
+                </label>
+                <input
+                  id="subject"
+                  type="text"
+                  value={formData.subject}
+                  onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                  className="w-full rounded-md border bg-background px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-primary/50"
+                  placeholder="What's this about?"
                   required
                   aria-required="true"
                   disabled={status.isSubmitting}

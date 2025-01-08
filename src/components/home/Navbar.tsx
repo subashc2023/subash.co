@@ -10,6 +10,7 @@ import { Menu, X } from 'lucide-react'
 interface NavItem {
   name: string;
   href: string;
+  sections?: string[];
 }
 
 export function Navbar() {
@@ -160,10 +161,17 @@ export function Navbar() {
     }
   }
 
+  const isNavItemActive = (item: NavItem) => {
+    if (item.sections) {
+      return item.sections.includes(activeSection);
+    }
+    return activeSection === item.href.substring(1);
+  };
+
   const NavLinks = ({ mobile = false }: { mobile?: boolean }) => (
     <ul className={`flex ${mobile ? 'flex-col items-center gap-6' : 'items-center justify-center gap-8'}`}>
       {navItems.map((item: NavItem) => {
-        const isActive = activeSection === item.href.substring(1)
+        const isActive = isNavItemActive(item);
         return (
           <li key={item.href} className="relative">
             <a

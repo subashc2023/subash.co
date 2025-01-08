@@ -1,6 +1,6 @@
 "use client"
 
-import { Mail, FileText } from "lucide-react"
+import { Mail, FileUser } from "lucide-react"
 import { siteConfig } from "@/config/site"
 
 const GithubIcon = () => (
@@ -33,7 +33,7 @@ const socialLinks = [
   },
   {
     href: "#",
-    icon: <FileText className="h-4 w-4" />,
+    icon: <FileUser className="h-4 w-4" />,
     label: "Download CV",
   },
 ]

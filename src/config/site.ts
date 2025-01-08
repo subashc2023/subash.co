@@ -10,6 +10,7 @@ export const siteConfig = {
 
 export const navItems: NavItem[] = [
   { name: "Home", href: "#hero" },
+  { name: "Resume", href: "#skills", sections: ["skills", "experience", "certifications"] },
   { name: "Projects", href: "#projects" },
   { name: "Contact", href: "#contact" },
 ]

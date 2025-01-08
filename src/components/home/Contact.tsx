@@ -16,12 +16,12 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="py-20">
+    <section id="contact" className="py-32">
       <div className="container px-4">
-        <h2 className="text-3xl font-bold mb-16 text-center">Contact</h2>
-        <div className="max-w-xl mx-auto">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <h2 className="text-4xl font-bold mb-20 text-center">Contact</h2>
+        <div className="max-w-2xl mx-auto">
+          <form onSubmit={handleSubmit} className="space-y-8">
+            <div className="space-y-6">
               <div className="space-y-2">
                 <label htmlFor="name" className="text-sm font-medium">
                   Name
@@ -31,7 +31,7 @@ export function Contact() {
                   type="text"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full rounded-md border bg-background px-3 py-2 text-sm"
+                  className="w-full rounded-md border bg-background px-4 py-3 text-base"
                   required
                 />
               </div>
@@ -45,7 +45,7 @@ export function Contact() {
                   type="email"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full rounded-md border bg-background px-3 py-2 text-sm"
+                  className="w-full rounded-md border bg-background px-4 py-3 text-base"
                   required
                 />
               </div>
@@ -59,14 +59,14 @@ export function Contact() {
                 id="message"
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="w-full rounded-md border bg-background px-3 py-2 text-sm min-h-[150px]"
+                className="w-full rounded-md border bg-background px-4 py-3 text-base min-h-[200px]"
                 required
               />
             </div>
 
             <button
               type="submit"
-              className="w-full rounded-md bg-primary text-primary-foreground px-4 py-2 text-sm font-medium hover:bg-primary/90"
+              className="w-full rounded-md bg-primary text-primary-foreground px-6 py-3 text-base font-medium hover:bg-primary/90 transition-colors"
             >
               Send Message
             </button>

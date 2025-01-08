@@ -23,6 +23,20 @@ export function Navbar() {
     const sectionRatios = new Map<string, number>()
     let debounceTimeout: NodeJS.Timeout
 
+    // Function to check if we're at the bottom of the page
+    const isAtBottom = () => {
+      const threshold = 50; // pixels from bottom
+      return (window.innerHeight + window.pageYOffset) >= 
+        document.documentElement.scrollHeight - threshold;
+    }
+
+    // Function to handle scroll events
+    const handleScroll = () => {
+      if (isAtBottom()) {
+        setActiveSection('contact')
+      }
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         // Clear any pending timeout
@@ -37,6 +51,12 @@ export function Navbar() {
 
         // Debounce the section update to avoid rapid changes
         debounceTimeout = setTimeout(() => {
+          // Don't update if we're at the bottom of the page
+          if (isAtBottom()) {
+            setActiveSection('contact')
+            return
+          }
+
           // Special case for top of page
           if (window.scrollY < 100) {
             setActiveSection('hero')
@@ -69,9 +89,7 @@ export function Navbar() {
         }, 100) // Debounce time
       },
       {
-        // Adjust the observation area to be more centered
         rootMargin: '-40% 0px -40% 0px',
-        // Multiple thresholds for smoother detection
         threshold: [0, 0.15, 0.5, 0.8, 1]
       }
     )
@@ -83,11 +101,15 @@ export function Navbar() {
         sectionRatios.set(section.id, 0)
       })
 
+      // Add scroll event listener
+      window.addEventListener('scroll', handleScroll, { passive: true })
+
       return () => {
         if (debounceTimeout) {
           clearTimeout(debounceTimeout)
         }
         sections.forEach((section) => observer.unobserve(section))
+        window.removeEventListener('scroll', handleScroll)
       }
     } catch (error) {
       console.error('Error setting up intersection observer:', error)

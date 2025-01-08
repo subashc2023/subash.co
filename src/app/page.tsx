@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Hero from '@/components/home/Hero';
 import { Skills } from '@/components/home/Skills';
 import { Experience } from '@/components/home/Experience';
+import { Certifications } from '@/components/home/Certifications';
 import { Projects } from '@/components/home/Projects';
 import { Contact } from '@/components/home/Contact';
 import { Footer } from '@/components/home/Footer';
@@ -24,6 +25,7 @@ export default function Home() {
         <Hero />
         <Skills />
         <Experience />
+        <Certifications />
         <Projects />
       </div>
 

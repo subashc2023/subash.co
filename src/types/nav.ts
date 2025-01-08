@@ -1,3 +1,5 @@
+import type { ReactElement } from 'react'
+
 export interface NavItem {
   name: string;
   href: string;
@@ -5,6 +7,6 @@ export interface NavItem {
 
 export interface SocialLink {
   href: string;
-  icon: JSX.Element;
+  icon: ReactElement;
   label: string;
 } 

@@ -13,6 +13,48 @@ interface Experience {
   website?: string;
 }
 
+// Helper function to calculate duration
+function calculateDuration(period: string): string {
+  const [start, end] = period.split(" - ");
+  const startDate = new Date(start);
+  const endDate = end === "Present" ? new Date() : new Date(end);
+  
+  const months = (endDate.getFullYear() - startDate.getFullYear()) * 12 + 
+                (endDate.getMonth() - startDate.getMonth());
+  
+  const years = Math.floor(months / 12);
+  const remainingMonths = months % 12;
+  
+  if (years === 0) {
+    return `${remainingMonths}mo`;
+  }
+  
+  return remainingMonths === 0 
+    ? `${years}yr`
+    : `${years}yr ${remainingMonths}mo`;
+}
+
+// Helper function to extract status from title
+function extractStatus(title: string): string {
+  const match = title.match(/\((.*?)\)/);
+  return match ? match[1] : 'Full-time';
+}
+
+// Helper function to get status color
+function getStatusColor(status: string): string {
+  switch (status.toLowerCase()) {
+    case 'intern':
+      return 'bg-blue-500/10 text-blue-500';
+    case 'contract':
+      return 'bg-purple-500/10 text-purple-500';
+    case 'freelance':
+      return 'bg-green-500/10 text-green-500';
+    case 'full-time':
+    default:
+      return 'bg-primary/10 text-primary';
+  }
+}
+
 const experiences: Experience[] = [
   {
     company: "JPMorgan Chase",
@@ -26,7 +68,7 @@ const experiences: Experience[] = [
       "Drive continuous data modernization efforts to make the firm's data more Findable, Accessible, Interoperable, and Reusable (FAIR principles)",
       "Design and implement solutions for metadata management across relational and graph databases to enhance data discovery and quality assessment. Leveraged knowledge graphs to create various recomendation engines to increase user efficiency 10x or more",
       "Develop and maintain automated workflows for data quality scoring and reporting using Alteryx, Python, SQL, and Tableau",
-      "Doubled our data store from 150k to 280k by onboarding First Republic Bank",
+      "Doubled our data store from 150k to 280k by onboarding First Republic Bank. Implemented many custom solutions to allow the ingestion and transformation of their data to be done more quickly and efficiently",
     ],
     technologies: ["AWS", "Python", "RDF - Resource Description Framework", "Alteryx", "Tableau", "SQL"],
     logo: "/companies/jpmorganchase_logo.jpeg"
@@ -99,39 +141,54 @@ export function Experience() {
   return (
     <section id="experience" className="py-20">
       <div className="container px-4">
-        <h2 className="text-3xl font-bold mb-16 text-center">Experience</h2>
+        <h2 className="text-3xl font-bold mb-16 text-center">
+          <span className="bg-gradient-to-r from-primary to-primary/50 bg-clip-text text-transparent">Experience</span>
+        </h2>
         <div className="space-y-12 max-w-6xl mx-auto relative">
           {/* Single Vertical Line */}
-          <div className="absolute left-[200px] top-0 bottom-0 w-[1px] bg-border"></div>
+          <div className="absolute left-[200px] top-0 bottom-0 w-[1px] bg-gradient-to-b from-border/0 via-border to-border/0"></div>
           
           {experiences.map((exp, index) => (
-            <div key={index} className="grid grid-cols-[200px_1fr] gap-8">
+            <div key={index} className="grid grid-cols-[200px_1fr] gap-8 group">
               {/* Left Column - Time, Location, and Logo */}
               <div className="space-y-4">
                 <div className="space-y-1 relative">
-                  {/* Circle */}
-                  <div className="absolute right-[-8px] top-[6px] w-[16px] h-[16px] rounded-full border border-border bg-background">
-                    {index === 0 && <div className="absolute inset-[3px] rounded-full bg-border" />}
+                  {/* Circle with pulse effect for current position */}
+                  <div className="absolute right-[-8px] top-[6px] w-[16px] h-[16px] rounded-full border-2 border-primary/50 bg-background shadow-lg">
+                    {index === 0 && (
+                      <>
+                        <div className="absolute inset-[3px] rounded-full bg-primary animate-pulse" />
+                        <div className="absolute -inset-2 rounded-full border border-primary/20 animate-ping" />
+                      </>
+                    )}
                   </div>
-                  <p className="text-sm font-medium">{exp.period}</p>
+                  <p className="text-sm font-medium group-hover:text-primary transition-colors">{exp.period}</p>
+                  <div className="flex items-center gap-1.5">
+                    <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-medium ${getStatusColor(extractStatus(exp.title))}`}>
+                      {extractStatus(exp.title)}
+                    </span>
+                    <span className="text-xs text-muted-foreground/80 italic">
+                      {calculateDuration(exp.period)}
+                    </span>
+                  </div>
                   <p className="text-sm text-muted-foreground">{exp.location}</p>
                 </div>
                 {exp.logo && (
-                  <div className="relative w-16 h-16 rounded-md border overflow-hidden group">
+                  <div className="relative w-16 h-16 rounded-md border overflow-hidden group/logo shadow-md hover:shadow-xl transition-shadow">
                     {exp.website ? (
                       <a
                         href={exp.website}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="block w-full h-full group"
+                        className="block w-full h-full"
                       >
                         <Image
                           src={exp.logo}
                           alt={`${exp.company} logo`}
                           fill
-                          className="object-cover transition-transform group-hover:scale-110"
+                          className="object-cover transition-transform group-hover/logo:scale-110"
                         />
-                        <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover/logo:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
                           <ExternalLink className="w-4 h-4 text-primary" />
                         </div>
                       </a>
@@ -147,55 +204,59 @@ export function Experience() {
                 )}
               </div>
 
-              {/* Right Column - Experience Details */}
-              <div className="space-y-6 pl-8">
-                {/* Company and Role */}
-                <div className="space-y-2">
-                  <h3 className="text-xl font-semibold tracking-tight">
-                    {exp.website ? (
-                      <a 
-                        href={exp.website}
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 hover:text-primary hover:underline decoration-primary underline-offset-4 transition-all"
-                      >
-                        {exp.company}
-                        <ExternalLink className="w-4 h-4" />
-                      </a>
-                    ) : (
-                      exp.company
-                    )}
-                  </h3>
-                  <p className="text-lg font-medium text-muted-foreground">{exp.title}</p>
-                  {exp.companyInfo && (
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      {exp.companyInfo}
+              {/* Right Column - Experience Details Card */}
+              <div className="relative pl-8 group-hover:-translate-y-1 transition-transform duration-300">
+                <div className="space-y-6 p-6 rounded-xl border bg-card/50 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all">
+                  {/* Company and Role */}
+                  <div className="space-y-2">
+                    <h3 className="text-xl font-semibold tracking-tight">
+                      {exp.website ? (
+                        <a 
+                          href={exp.website}
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 hover:text-primary transition-colors group/link"
+                        >
+                          {exp.company}
+                          <ExternalLink className="w-4 h-4 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
+                        </a>
+                      ) : (
+                        exp.company
+                      )}
+                    </h3>
+                    <p className="text-lg font-medium bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
+                      {exp.title.replace(/\s*\(.*?\)\s*/, '')}
                     </p>
-                  )}
-                </div>
+                    {exp.companyInfo && (
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        {exp.companyInfo}
+                      </p>
+                    )}
+                  </div>
 
-                {/* Responsibilities */}
-                <div className="space-y-3">
-                  <h4 className="text-base font-medium">Responsibilities</h4>
-                  <ul className="list-disc list-outside ml-4 space-y-2 text-sm text-muted-foreground">
-                    {exp.description.map((item, i) => (
-                      <li key={i} className="leading-relaxed">{item}</li>
-                    ))}
-                  </ul>
-                </div>
+                  {/* Responsibilities */}
+                  <div className="space-y-3">
+                    <h4 className="text-base font-medium">Responsibilities</h4>
+                    <ul className="list-disc list-outside ml-4 space-y-2 text-sm text-muted-foreground">
+                      {exp.description.map((item, i) => (
+                        <li key={i} className="leading-relaxed hover:text-foreground transition-colors">{item}</li>
+                      ))}
+                    </ul>
+                  </div>
 
-                {/* Technologies */}
-                <div className="space-y-3">
-                  <h4 className="text-base font-medium">Technologies & Skills</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {exp.technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-medium"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+                  {/* Technologies */}
+                  <div className="space-y-3">
+                    <h4 className="text-base font-medium">Technologies & Skills</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {exp.technologies.map((tech) => (
+                        <span
+                          key={tech}
+                          className="inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-medium bg-secondary/50 shadow-sm hover:shadow hover:bg-secondary/70 transition-all duration-200"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>

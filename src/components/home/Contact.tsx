@@ -68,9 +68,13 @@ export function Contact() {
   return (
     <section id="contact" className="py-32">
       <div className="container px-4">
-        <h2 className="text-4xl font-bold mb-20 text-center">Contact</h2>
+        <h2 className="text-4xl font-bold mb-20 text-center">
+          <span className="bg-gradient-to-r from-primary to-primary/50 bg-clip-text text-transparent">
+            Contact
+          </span>
+        </h2>
         <div className="max-w-6xl mx-auto">
-          <form onSubmit={handleSubmit} className="space-y-8">
+          <form onSubmit={handleSubmit} className="space-y-8 p-8 rounded-xl border bg-card/50 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="space-y-2">
                 <label htmlFor="name" className="text-sm font-medium">
@@ -81,7 +85,7 @@ export function Contact() {
                   type="text"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full rounded-md border bg-background px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-primary/50"
+                  className="w-full rounded-lg border bg-background/50 backdrop-blur-sm px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-primary/50 shadow-sm hover:shadow transition-shadow"
                   placeholder="Your name"
                   required
                   aria-required="true"
@@ -98,7 +102,7 @@ export function Contact() {
                   type="email"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full rounded-md border bg-background px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-primary/50"
+                  className="w-full rounded-lg border bg-background/50 backdrop-blur-sm px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-primary/50 shadow-sm hover:shadow transition-shadow"
                   placeholder="your.email@example.com"
                   required
                   aria-required="true"
@@ -115,7 +119,7 @@ export function Contact() {
                   type="text"
                   value={formData.subject}
                   onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                  className="w-full rounded-md border bg-background px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-primary/50"
+                  className="w-full rounded-lg border bg-background/50 backdrop-blur-sm px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-primary/50 shadow-sm hover:shadow transition-shadow"
                   placeholder="What's this about?"
                   required
                   aria-required="true"
@@ -132,7 +136,7 @@ export function Contact() {
                 id="message"
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="w-full rounded-md border bg-background px-4 py-3 text-base min-h-[200px] focus:outline-none focus:ring-2 focus:ring-primary/50"
+                className="w-full rounded-lg border bg-background/50 backdrop-blur-sm px-4 py-3 text-base min-h-[200px] focus:outline-none focus:ring-2 focus:ring-primary/50 shadow-sm hover:shadow transition-shadow"
                 placeholder="Your message..."
                 required
                 aria-required="true"
@@ -141,13 +145,13 @@ export function Contact() {
             </div>
 
             {status.error && (
-              <div className="text-sm text-destructive" role="alert">
+              <div className="text-sm text-destructive bg-destructive/10 px-4 py-2 rounded-lg" role="alert">
                 {status.error}
               </div>
             )}
 
             {status.isSuccess && (
-              <div className="text-sm text-green-500" role="alert">
+              <div className="text-sm text-green-500 bg-green-500/10 px-4 py-2 rounded-lg" role="alert">
                 Message sent successfully!
               </div>
             )}
@@ -155,7 +159,7 @@ export function Contact() {
             <button
               type="submit"
               disabled={status.isSubmitting}
-              className="w-full rounded-md bg-primary text-primary-foreground px-6 py-3 text-base font-medium hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              className="w-full rounded-lg bg-primary text-primary-foreground px-6 py-3 text-base font-medium hover:bg-primary/90 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
             >
               {status.isSubmitting ? (
                 <>

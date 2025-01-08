@@ -48,18 +48,35 @@ export function Skills() {
   return (
     <section id="skills" className="py-20">
       <div className="container px-4 max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold mb-16 text-center">Skills</h2>
+        <h2 className="text-3xl font-bold mb-16 text-center">
+          <span className="bg-gradient-to-r from-primary to-primary/50 bg-clip-text text-transparent">Skills</span>
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
           {skillCategories.map((category) => (
-            <div key={category.title} className="space-y-6 min-w-[250px]">
-              <h3 className="text-xl font-semibold">{category.title}</h3>
+            <div 
+              key={category.title} 
+              className="space-y-6 min-w-[250px] p-6 rounded-xl border bg-card/50 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300"
+            >
+              <h3 className="text-xl font-semibold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
+                {category.title}
+              </h3>
               <div className="space-y-4">
                 {category.skills.map((skill) => (
-                  <div key={skill.name} className="space-y-2">
-                    <span className="text-sm font-medium">{skill.name}</span>
-                    <div className="h-2 w-full bg-secondary rounded-full overflow-hidden">
+                  <div 
+                    key={skill.name} 
+                    className="space-y-2 group hover:translate-x-1 transition-transform duration-200"
+                  >
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm font-medium group-hover:text-primary transition-colors">
+                        {skill.name}
+                      </span>
+                      <span className="text-xs text-muted-foreground">
+                        {skill.progress}%
+                      </span>
+                    </div>
+                    <div className="h-2 w-full bg-secondary/50 rounded-full overflow-hidden shadow-inner">
                       <div 
-                        className="h-full bg-primary transition-all duration-500 ease-out"
+                        className="h-full bg-gradient-to-r from-primary to-primary/70 transition-all duration-500 ease-out group-hover:shadow-lg"
                         style={{ width: `${skill.progress}%` }}
                       />
                     </div>

@@ -19,8 +19,17 @@ function calculateDuration(period: string): string {
   const startDate = new Date(start);
   const endDate = end === "Present" ? new Date() : new Date(end);
   
-  const months = (endDate.getFullYear() - startDate.getFullYear()) * 12 + 
-                (endDate.getMonth() - startDate.getMonth());
+  // Get difference in months
+  const diffYears = endDate.getFullYear() - startDate.getFullYear();
+  const diffMonths = endDate.getMonth() - startDate.getMonth();
+  
+  // Total months accounting for year difference
+  let months = diffMonths + diffYears * 12;
+  
+  // Adjust for partial months
+  if (endDate.getDate() < startDate.getDate()) {
+    months--;
+  }
   
   const years = Math.floor(months / 12);
   const remainingMonths = months % 12;

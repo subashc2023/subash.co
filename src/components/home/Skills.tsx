@@ -14,11 +14,11 @@ const skillCategories: SkillCategory[] = [
     skills: [
       { name: "Python", progress: 95 },
       { name: "Go", progress: 85 },
+      { name: "TypeScript", progress: 80 },
       { name: "Java", progress: 75 },
       { name: "C++", progress: 70 },
-      { name: "JavaScript", progress: 80 },
-      { name: "TypeScript", progress: 80 },
       { name: "SQL", progress: 85 },
+      { name: "JavaScript", progress: 65 },
     ],
   },
   {
@@ -69,9 +69,6 @@ export function Skills() {
                     <div className="flex justify-between items-center">
                       <span className="text-sm font-medium group-hover:text-primary transition-colors">
                         {skill.name}
-                      </span>
-                      <span className="text-xs text-muted-foreground">
-                        {skill.progress}%
                       </span>
                     </div>
                     <div className="h-2 w-full bg-secondary/50 rounded-full overflow-hidden shadow-inner">

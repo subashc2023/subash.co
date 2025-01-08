@@ -21,7 +21,7 @@ export default function Hero() {
   return (
     <section id="hero" className="relative min-h-[calc(100vh-4rem)] flex flex-col items-center justify-center py-8 sm:py-12 md:py-16">
       <div className="container px-4 sm:px-6 md:px-8">
-        <div className="p-8 rounded-xl border bg-card/50 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 relative">
+        <div className="p-8 rounded-xl border bg-card/50 backdrop-blur-sm shadow-lg transition-all duration-300 relative">
           {/* Center Line */}
           <div className="absolute left-1/2 top-8 bottom-8 w-[1px] bg-border hidden md:block" />
           
@@ -66,7 +66,7 @@ export default function Hero() {
                 <h2 className="text-xl sm:text-2xl font-semibold mb-3 sm:mb-4">Education</h2>
                 <div className="flex flex-col gap-2">
                   <p className="font-medium">BSc in Computer Science</p>
-                  <p className="text-muted-foreground">University of Texas at Dallas (2023)</p>
+                  <p className="text-muted-foreground">University of Texas at Dallas (Aug 2023)</p>
                 </div>
               </div>
 

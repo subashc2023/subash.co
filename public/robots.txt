@@ -3,4 +3,7 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://subash.us/sitemap.xml 
+Sitemap: https://subash.us/sitemap.xml
+
+# Author: Subash Chandra
+# Contact: subashc2023@gmail.com 

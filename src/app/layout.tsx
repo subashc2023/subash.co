@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/home/Navbar";
 import { ThemeProvider } from "@/components/theme";
+import { siteConfig } from "@/config/site";
 
 // Optimize font loading
 const inter = Inter({ 
@@ -14,27 +15,14 @@ const inter = Inter({
 // Improve metadata
 export const metadata: Metadata = {
   title: {
-    default: "Subash Chandra - Technical Product Associate & Data Domain Architect",
-    template: "%s | Subash Chandra"
+    default: `${siteConfig.name} - ${siteConfig.title}`,
+    template: `%s | ${siteConfig.name}`
   },
-  description: "Personal website of Subash Chandra, a Data Domain Architect at J.P. Morgan Chase. Experienced in Cloud Engineering, AWS, Python, and Data Architecture.",
-  keywords: [
-    "Subash Chandra",
-    "Technical Product Associate",
-    "Data Domain Architect",
-    "J.P. Morgan Chase",
-    "Cloud Engineering",
-    "AWS",
-    "Python",
-    "Data Architecture",
-    "DevOps",
-    "Software Engineer",
-    "Dallas",
-    "Texas"
-  ],
-  authors: [{ name: "Subash Chandra", url: "https://subash.us" }],
-  creator: "Subash Chandra",
-  publisher: "Subash Chandra",
+  description: siteConfig.longDescription,
+  keywords: siteConfig.keywords,
+  authors: [{ name: siteConfig.name, url: siteConfig.url }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
   robots: {
     index: true,
     follow: true,
@@ -49,20 +37,20 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://subash.us",
-    title: "Subash Chandra - Technical Product Associate & Data Domain Architect",
-    description: "Personal website of Subash Chandra, a Technical Product Associate and Data Domain Architect at J.P. Morgan Chase. Experienced in Cloud Engineering, AWS, Python, and Data Architecture.",
-    siteName: "Subash Chandra",
+    url: siteConfig.url,
+    title: `${siteConfig.name} - ${siteConfig.title}`,
+    description: siteConfig.longDescription,
+    siteName: siteConfig.name,
   },
   twitter: {
     card: 'summary',
-    title: "Subash Chandra - Technical Product Associate & Data Domain Architect",
-    description: "Personal website of Subash Chandra, a Technical Product Associate and Data Domain Architect at J.P. Morgan Chase.",
+    title: `${siteConfig.name} - ${siteConfig.title}`,
+    description: siteConfig.longDescription,
   },
   alternates: {
-    canonical: 'https://subash.us'
+    canonical: siteConfig.url
   },
-  metadataBase: new URL('https://subash.us'),
+  metadataBase: new URL(siteConfig.url),
 };
 
 // Viewport and theme configuration
@@ -70,8 +58,8 @@ export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "white" },
-    { media: "(prefers-color-scheme: dark)", color: "#0A0A0A" }
+    { media: "(prefers-color-scheme: light)", color: siteConfig.theme.light.background },
+    { media: "(prefers-color-scheme: dark)", color: siteConfig.theme.dark.background }
   ],
 };
 

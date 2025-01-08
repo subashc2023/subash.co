@@ -31,7 +31,7 @@ export function Projects() {
           {projects.map((project) => (
             <div 
               key={project.title}
-              className="p-8 rounded-xl border bg-card/50 backdrop-blur-sm hover:bg-accent/10 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 group"
+              className="p-8 rounded-xl border bg-card/50 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5"
             >
               <div className="flex items-start justify-between gap-4">
                 <div>
@@ -39,7 +39,7 @@ export function Projects() {
                     <Link 
                       href={project.link}
                       target="_blank"
-                      className="hover:text-primary transition-colors inline-flex items-center gap-2"
+                      className="hover:text-primary transition-colors inline-flex items-center gap-2 group"
                     >
                       {project.title}
                       <span className="text-primary/50 group-hover:translate-x-1 transition-transform">→</span>
@@ -67,7 +67,7 @@ export function Projects() {
                 <Link
                   href={project.github}
                   target="_blank"
-                  className="text-muted-foreground hover:text-foreground transition-colors p-2 hover:bg-secondary/50 rounded-full group-hover:scale-110 transition-transform"
+                  className="text-muted-foreground hover:text-foreground transition-colors p-2 hover:bg-secondary/50 rounded-full transform hover:scale-110 transition-all"
                 >
                   <Github className="h-6 w-6" />
                 </Link>

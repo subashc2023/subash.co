@@ -58,7 +58,13 @@ export default function Hero() {
               <div>
                 <h2 className="text-xl sm:text-2xl font-semibold mb-3 sm:mb-4">Biography</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  A dedicated and analytical engineering professional specializing in Cloud Engineering and Data Architecture. With expertise in AWS, Python, and modern DevOps practices, I focus on implementing technical solutions that enhance data management and system effectiveness. Certified in AWS and Apache Kafka, I excel in automating complex tasks and optimizing data workflows while maintaining high standards of reliability and security. Always seeking ways to transform technical challenges into streamlined, efficient processes that drive business value. I enjoycollaborative development, where diverse perspectives lead to more robust and innovative solutions.
+                  A dedicated and analytical engineering professional specializing in Cloud Engineering and Data Architecture. 
+                  With expertise in AWS, Python, and modern DevOps practices, I focus on implementing technical solutions that 
+                  enhance data management and system effectiveness. Certified in AWS and Apache Kafka, I excel in automating 
+                  complex tasks and optimizing data workflows while maintaining high standards of reliability and security. 
+                  Always seeking ways to transform technical challenges into streamlined, efficient processes that drive 
+                  business value. I enjoy collaborative development, where diverse perspectives lead to more robust and 
+                  innovative solutions.
                 </p>
               </div>
 

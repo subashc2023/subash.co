@@ -1,6 +1,6 @@
 # Subash Chandra's Portfolio Website
 
-Welcome to my personal portfolio website repository! This site showcases my professional experience, skills, and projects as a Technical Product Associate & Data Domain Architect at J.P. Morgan Chase.
+Welcome to my personal portfolio website repository! This site showcases my professional experience, skills, and projects as a Data Domain Architect at J.P. Morgan Chase.
 
 🌐 **Live Site**: [subash.co](https://subash.co)
 
@@ -38,12 +38,26 @@ Welcome to my personal portfolio website repository! This site showcases my prof
    npm install
    ```
 
-3. **Run the development server**
+3. **Set up environment variables**
+   Create a `.env.local` file in the root directory with the following variables:
+   ```env
+   RESEND_API_KEY=your_resend_api_key
+   CONTACT_EMAIL=your_email@example.com
+   ```
+
+4. **Set up Resend for email functionality**
+   - Create an account at [Resend](https://resend.com)
+   - Go to your dashboard and get your API key
+   - Add the API key to your `.env.local` file
+   - Add your email address to the `CONTACT_EMAIL` variable in `.env.local`
+   - Verify your domain in Resend dashboard (if using a custom domain)
+
+5. **Run the development server**
    ```bash
    npm run dev
    ```
 
-4. **Open [http://localhost:3000](http://localhost:3000) in your browser**
+6. **Open [http://localhost:3000](http://localhost:3000) in your browser**
 
 ## 📁 Project Structure
 

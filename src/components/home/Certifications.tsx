@@ -1,5 +1,8 @@
-import { Award, ExternalLink } from 'lucide-react'
-import Image from 'next/image'
+import { Award } from "lucide-react"
+import { Card } from "@/components/ui/Card"
+import { SectionHeader } from "@/components/ui/SectionHeader"
+import { ImageContainer } from "@/components/ui/ImageContainer"
+import { ExternalLink } from "@/components/ui/ExternalLink"
 
 interface Certification {
   name: string;
@@ -36,11 +39,7 @@ export function Certifications() {
   return (
     <section id="certifications" className="py-20">
       <div className="container px-4">
-        <h2 className="text-3xl font-bold mb-16 text-center">
-          <span className="bg-gradient-to-r from-primary to-primary/50 bg-clip-text text-transparent">
-            Certifications
-          </span>
-        </h2>
+        <SectionHeader title="Certifications" />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {certifications.map((cert) => (
             <a
@@ -50,26 +49,22 @@ export function Certifications() {
               rel="noopener noreferrer"
               className="block group"
             >
-              <div className="p-6 rounded-xl border bg-card/50 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+              <Card hover>
                 <div className="flex items-start gap-4">
                   {cert.badgeLogo ? (
-                    <div className="relative w-20 h-20 rounded-lg overflow-hidden shadow-md group-hover:shadow-lg transition-all">
-                      <Image 
-                        src={cert.badgeLogo} 
-                        alt={`${cert.name} badge`}
-                        fill
-                        className="object-contain transition-transform duration-300 group-hover:scale-110"
-                      />
-                    </div>
+                    <ImageContainer
+                      src={cert.badgeLogo}
+                      alt={`${cert.name} badge`}
+                      size="lg"
+                      className="shadow-md group-hover:shadow-lg"
+                    />
                   ) : cert.logo ? (
-                    <div className="relative w-12 h-12 rounded-lg overflow-hidden shadow-md group-hover:shadow-lg transition-all">
-                      <Image 
-                        src={cert.logo} 
-                        alt={`${cert.issuer} logo`}
-                        fill
-                        className="object-contain transition-transform duration-300 group-hover:scale-110"
-                      />
-                    </div>
+                    <ImageContainer
+                      src={cert.logo}
+                      alt={`${cert.issuer} logo`}
+                      size="md"
+                      className="shadow-md group-hover:shadow-lg"
+                    />
                   ) : (
                     <div className="p-2 rounded-lg bg-primary/10 shadow-md group-hover:shadow-lg transition-all">
                       <Award className="w-12 h-12 text-primary" />
@@ -80,7 +75,7 @@ export function Certifications() {
                       <h3 className="font-medium leading-tight group-hover:text-primary transition-colors">
                         {cert.name}
                       </h3>
-                      <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      <ExternalLink.Icon className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </div>
                     <p className="text-sm text-muted-foreground group-hover:text-muted-foreground/80 transition-colors">
                       {cert.issuer}
@@ -97,7 +92,7 @@ export function Certifications() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </Card>
             </a>
           ))}
         </div>

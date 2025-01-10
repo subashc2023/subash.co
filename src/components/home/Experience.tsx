@@ -1,5 +1,9 @@
-import Image from "next/image"
-import { ExternalLink } from "lucide-react"
+import { Card } from "@/components/ui/Card"
+import { SectionHeader } from "@/components/ui/SectionHeader"
+import { GradientText } from "@/components/ui/GradientText"
+import { Badge } from "@/components/ui/Badge"
+import { ImageContainer } from "@/components/ui/ImageContainer"
+import { ExternalLink } from "@/components/ui/ExternalLink"
 
 interface Experience {
   title: string;
@@ -143,16 +147,14 @@ const experiences: Experience[] = [
     ],
     technologies: ["AWS", "Docker", "ELK Stack", "Kibana", "Logstash", "Git", "SQL"],
     logo: "/companies/ezopsinc_logo.jpeg"
-  },
-];
+  }
+]
 
 export function Experience() {
   return (
     <section id="experience" className="py-20">
       <div className="container px-4">
-        <h2 className="text-3xl font-bold mb-16 text-center">
-          <span className="bg-gradient-to-r from-primary to-primary/50 bg-clip-text text-transparent">Experience</span>
-        </h2>
+        <SectionHeader title="Experience" />
         <div className="space-y-12 max-w-6xl mx-auto relative">
           {/* Single Vertical Line */}
           <div className="absolute left-[200px] top-0 bottom-0 w-[1px] bg-gradient-to-b from-border/0 via-border to-border/0"></div>
@@ -160,8 +162,8 @@ export function Experience() {
           {experiences.map((exp, index) => (
             <div key={index} className="grid grid-cols-[200px_1fr] gap-8 group">
               {/* Left Column - Time, Location, and Logo */}
-              <div className="space-y-4">
-                <div className="space-y-1 relative">
+              <div>
+                <div className="space-y-1 relative mb-4">
                   {/* Circle with pulse effect for current position */}
                   <div className="absolute right-[-8px] top-[6px] w-[16px] h-[16px] rounded-full border-2 border-primary/50 bg-background shadow-lg">
                     {index === 0 && (
@@ -173,68 +175,46 @@ export function Experience() {
                   </div>
                   <p className="text-sm font-medium group-hover:text-primary transition-colors">{exp.period}</p>
                   <div className="flex items-center gap-1.5">
-                    <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-medium ${getStatusColor(extractStatus(exp.title))}`}>
+                    <Badge className={getStatusColor(extractStatus(exp.title))}>
                       {extractStatus(exp.title)}
-                    </span>
+                    </Badge>
                     <span className="text-xs text-muted-foreground/80 italic">
                       {calculateDuration(exp.period)}
                     </span>
                   </div>
                   <p className="text-sm text-muted-foreground">{exp.location}</p>
                 </div>
+
                 {exp.logo && (
-                  <div className="relative w-16 h-16 rounded-md border overflow-hidden group/logo shadow-md hover:shadow-xl transition-shadow">
-                    {exp.website ? (
-                      <a
-                        href={exp.website}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block w-full h-full"
-                      >
-                        <Image
-                          src={exp.logo}
-                          alt={`${exp.company} logo`}
-                          fill
-                          className="object-cover transition-transform group-hover/logo:scale-110"
-                        />
-                        <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover/logo:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
-                          <ExternalLink className="w-4 h-4 text-primary" />
-                        </div>
-                      </a>
-                    ) : (
-                      <Image
-                        src={exp.logo}
-                        alt={`${exp.company} logo`}
-                        fill
-                        className="object-cover"
-                      />
-                    )}
-                  </div>
+                  <ImageContainer
+                    src={exp.logo}
+                    alt={`${exp.company} logo`}
+                    href={exp.website}
+                    size="md"
+                    priority={index < 2}
+                    className="mt-4"
+                  />
                 )}
               </div>
 
               {/* Right Column - Experience Details Card */}
               <div className="relative pl-8 group-hover:-translate-y-1 transition-transform duration-300">
-                <div className="space-y-6 p-6 rounded-xl border bg-card/50 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all">
+                <Card className="p-6 -mt-[22px]" hover={false}>
                   {/* Company and Role */}
                   <div className="space-y-2">
                     <h3 className="text-xl font-semibold tracking-tight">
                       {exp.website ? (
-                        <a 
-                          href={exp.website}
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 hover:text-primary transition-colors group/link"
-                        >
+                        <ExternalLink href={exp.website}>
                           {exp.company}
-                          <ExternalLink className="w-4 h-4 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
-                        </a>
+                        </ExternalLink>
                       ) : (
                         exp.company
                       )}
                     </h3>
-                    <p className="text-lg font-medium bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
-                      {exp.title.replace(/\s*\(.*?\)\s*/, '')}
+                    <p className="text-lg font-medium">
+                      <GradientText className="from-foreground to-foreground/70">
+                        {exp.title.replace(/\s*\(.*?\)\s*/, '')}
+                      </GradientText>
                     </p>
                     {exp.companyInfo && (
                       <p className="text-sm text-muted-foreground leading-relaxed">
@@ -244,7 +224,7 @@ export function Experience() {
                   </div>
 
                   {/* Responsibilities */}
-                  <div className="space-y-3">
+                  <div className="space-y-3 mt-6">
                     <h4 className="text-base font-medium">Responsibilities</h4>
                     <ul className="list-disc list-outside ml-4 space-y-2 text-sm text-muted-foreground">
                       {exp.description.map((item, i) => (
@@ -254,20 +234,15 @@ export function Experience() {
                   </div>
 
                   {/* Technologies */}
-                  <div className="space-y-3">
+                  <div className="space-y-3 mt-6">
                     <h4 className="text-base font-medium">Technologies & Skills</h4>
                     <div className="flex flex-wrap gap-2">
                       {exp.technologies.map((tech) => (
-                        <span
-                          key={tech}
-                          className="inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-medium bg-secondary/50 shadow-sm hover:shadow hover:bg-secondary/70 transition-all duration-200"
-                        >
-                          {tech}
-                        </span>
+                        <Badge key={tech}>{tech}</Badge>
                       ))}
                     </div>
                   </div>
-                </div>
+                </Card>
               </div>
             </div>
           ))}

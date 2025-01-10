@@ -1,5 +1,5 @@
-import Link from 'next/link'
 import { siteConfig } from '@/config/site'
+import { ExternalLink } from '@/components/ui/ExternalLink'
 
 export function Footer() {
   return (
@@ -12,40 +12,34 @@ export function Footer() {
             </p>
             <p className="text-sm text-muted-foreground text-center md:text-left">
               This website is{" "}
-              <Link
+              <ExternalLink
                 href="https://github.com/subashc2023/subash.co"
-                target="_blank"
-                rel="noopener noreferrer"
                 className="text-primary hover:underline"
               >
                 open source
-              </Link>
+              </ExternalLink>
               {" "}— feel free to use it as a template for your own portfolio!
             </p>
           </div>
           <div className="flex items-center gap-4">
-            <Link
+            <ExternalLink
               href={siteConfig.github}
-              target="_blank"
-              rel="noopener noreferrer"
               className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
             >
               GitHub
-            </Link>
-            <Link
+            </ExternalLink>
+            <ExternalLink
               href={siteConfig.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
               className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
             >
               LinkedIn
-            </Link>
-            <Link
+            </ExternalLink>
+            <a
               href={`mailto:${siteConfig.email}`}
               className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
             >
               Email
-            </Link>
+            </a>
           </div>
         </div>
       </div>

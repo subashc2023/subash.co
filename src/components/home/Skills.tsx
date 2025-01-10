@@ -1,3 +1,7 @@
+import { Card } from "@/components/ui/Card"
+import { SectionHeader } from "@/components/ui/SectionHeader"
+import { GradientText } from "@/components/ui/GradientText"
+
 interface Skill {
   name: string;
   progress: number; // 0 to 100
@@ -48,17 +52,17 @@ export function Skills() {
   return (
     <section id="skills" className="py-20">
       <div className="container px-4 max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold mb-16 text-center">
-          <span className="bg-gradient-to-r from-primary to-primary/50 bg-clip-text text-transparent">Skills</span>
-        </h2>
+        <SectionHeader title="Skills" />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
           {skillCategories.map((category) => (
-            <div 
+            <Card 
               key={category.title} 
-              className="space-y-6 min-w-[250px] p-6 rounded-xl border bg-card/50 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300"
+              className="space-y-6 min-w-[250px]"
             >
-              <h3 className="text-xl font-semibold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
-                {category.title}
+              <h3 className="text-xl font-semibold">
+                <GradientText className="from-foreground to-foreground/70">
+                  {category.title}
+                </GradientText>
               </h3>
               <div className="space-y-4">
                 {category.skills.map((skill) => (
@@ -80,7 +84,7 @@ export function Skills() {
                   </div>
                 ))}
               </div>
-            </div>
+            </Card>
           ))}
         </div>
       </div>

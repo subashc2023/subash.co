@@ -2,6 +2,11 @@
 
 import { useState } from "react"
 import { Send } from "lucide-react"
+import { Card } from "@/components/ui/Card"
+import { SectionHeader } from "@/components/ui/SectionHeader"
+import { Input } from "@/components/ui/Input"
+import { TextArea } from "@/components/ui/TextArea"
+import { Button } from "@/components/ui/Button"
 
 interface FormState {
   name: string
@@ -68,112 +73,81 @@ export function Contact() {
   return (
     <section id="contact" className="py-32">
       <div className="container px-4">
-        <h2 className="text-4xl font-bold mb-20 text-center">
-          <span className="bg-gradient-to-r from-primary to-primary/50 bg-clip-text text-transparent">
-            Contact
-          </span>
-        </h2>
+        <SectionHeader title="Contact" />
         <div className="max-w-6xl mx-auto">
-          <form onSubmit={handleSubmit} className="space-y-8 p-8 rounded-xl border bg-card/50 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="space-y-2">
-                <label htmlFor="name" className="text-sm font-medium">
-                  Name
-                </label>
-                <input
+          <Card className="p-8" hover>
+            <form onSubmit={handleSubmit} className="space-y-8">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <Input
                   id="name"
                   type="text"
+                  label="Name"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full rounded-lg border bg-background/50 backdrop-blur-sm px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-primary/50 shadow-sm hover:shadow transition-shadow"
                   placeholder="Your name"
                   required
                   aria-required="true"
                   disabled={status.isSubmitting}
                 />
-              </div>
 
-              <div className="space-y-2">
-                <label htmlFor="email" className="text-sm font-medium">
-                  Email
-                </label>
-                <input
+                <Input
                   id="email"
                   type="email"
+                  label="Email"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full rounded-lg border bg-background/50 backdrop-blur-sm px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-primary/50 shadow-sm hover:shadow transition-shadow"
                   placeholder="your.email@example.com"
                   required
                   aria-required="true"
                   disabled={status.isSubmitting}
                 />
-              </div>
 
-              <div className="space-y-2">
-                <label htmlFor="subject" className="text-sm font-medium">
-                  Subject
-                </label>
-                <input
+                <Input
                   id="subject"
                   type="text"
+                  label="Subject"
                   value={formData.subject}
                   onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                  className="w-full rounded-lg border bg-background/50 backdrop-blur-sm px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-primary/50 shadow-sm hover:shadow transition-shadow"
                   placeholder="What's this about?"
                   required
                   aria-required="true"
                   disabled={status.isSubmitting}
                 />
               </div>
-            </div>
 
-            <div className="space-y-2">
-              <label htmlFor="message" className="text-sm font-medium">
-                Message
-              </label>
-              <textarea
+              <TextArea
                 id="message"
+                label="Message"
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="w-full rounded-lg border bg-background/50 backdrop-blur-sm px-4 py-3 text-base min-h-[200px] focus:outline-none focus:ring-2 focus:ring-primary/50 shadow-sm hover:shadow transition-shadow"
                 placeholder="Your message..."
                 required
                 aria-required="true"
                 disabled={status.isSubmitting}
               />
-            </div>
 
-            {status.error && (
-              <div className="text-sm text-destructive bg-destructive/10 px-4 py-2 rounded-lg" role="alert">
-                {status.error}
-              </div>
-            )}
-
-            {status.isSuccess && (
-              <div className="text-sm text-green-500 bg-green-500/10 px-4 py-2 rounded-lg" role="alert">
-                Message sent successfully!
-              </div>
-            )}
-
-            <button
-              type="submit"
-              disabled={status.isSubmitting}
-              className="w-full rounded-lg bg-primary text-primary-foreground px-6 py-3 text-base font-medium hover:bg-primary/90 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
-            >
-              {status.isSubmitting ? (
-                <>
-                  <div className="h-4 w-4 border-2 border-current border-r-transparent rounded-full animate-spin" />
-                  Sending...
-                </>
-              ) : (
-                <>
-                  <Send className="w-4 h-4" />
-                  Send Message
-                </>
+              {status.error && (
+                <div className="text-sm text-destructive bg-destructive/10 px-4 py-2 rounded-lg" role="alert">
+                  {status.error}
+                </div>
               )}
-            </button>
-          </form>
+
+              {status.isSuccess && (
+                <div className="text-sm text-green-500 bg-green-500/10 px-4 py-2 rounded-lg" role="alert">
+                  Message sent successfully!
+                </div>
+              )}
+
+              <Button
+                type="submit"
+                disabled={status.isSubmitting}
+                loading={status.isSubmitting}
+                icon={!status.isSubmitting && <Send className="w-4 h-4" />}
+              >
+                {status.isSubmitting ? "Sending..." : "Send Message"}
+              </Button>
+            </form>
+          </Card>
         </div>
       </div>
     </section>

@@ -1,5 +1,8 @@
-import Link from "next/link"
 import { Github } from "lucide-react"
+import { Card } from "@/components/ui/Card"
+import { SectionHeader } from "@/components/ui/SectionHeader"
+import { Badge } from "@/components/ui/Badge"
+import { ExternalLink } from "@/components/ui/ExternalLink"
 
 const projects = [
   {
@@ -24,55 +27,41 @@ export function Projects() {
   return (
     <section id="projects" className="py-20">
       <div className="container px-4 mx-auto max-w-6xl">
-        <h2 className="text-3xl font-bold mb-16 text-center">
-          <span className="bg-gradient-to-r from-primary to-primary/50 bg-clip-text text-transparent">Projects</span>
-        </h2>
+        <SectionHeader title="Projects" />
         <div className="space-y-8">
           {projects.map((project) => (
-            <div 
+            <Card 
               key={project.title}
-              className="p-8 rounded-xl border bg-card/50 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5"
+              className="p-8"
             >
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <h3 className="text-xl font-semibold mb-1">
-                    <Link 
-                      href={project.link}
-                      target="_blank"
-                      className="hover:text-primary transition-colors inline-flex items-center gap-2 group"
-                    >
+                    <ExternalLink href={project.link}>
                       {project.title}
-                      <span className="text-primary/50 group-hover:translate-x-1 transition-transform">→</span>
-                    </Link>
+                    </ExternalLink>
                   </h3>
-                  <Link 
+                  <ExternalLink 
                     href={project.link}
-                    target="_blank"
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors mb-4 block"
+                    className="text-sm text-muted-foreground mb-4 block"
                   >
                     {project.url}
-                  </Link>
+                  </ExternalLink>
                   <p className="text-muted-foreground mb-4 leading-relaxed">{project.description}</p>
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-3 py-1 text-xs rounded-md bg-secondary/50 shadow-sm hover:shadow hover:bg-secondary/70 transition-all duration-200"
-                      >
-                        {tech}
-                      </span>
+                      <Badge key={tech}>{tech}</Badge>
                     ))}
                   </div>
                 </div>
-                <Link
+                <ExternalLink
                   href={project.github}
-                  target="_blank"
-                  className="text-muted-foreground hover:text-foreground transition-colors p-2 hover:bg-secondary/50 rounded-full transform hover:scale-110 transition-all"
+                  className="text-muted-foreground hover:text-foreground p-2 hover:bg-secondary/50 rounded-full transform hover:scale-110 transition-all"
                 >
                   <Github className="h-6 w-6" />
-                </Link>
+                </ExternalLink>
               </div>
-            </div>
+            </Card>
           ))}
         </div>
       </div>

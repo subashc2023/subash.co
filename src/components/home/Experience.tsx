@@ -157,7 +157,7 @@ export function Experience() {
         <SectionHeader title="Experience" />
         <div className="space-y-12 max-w-6xl mx-auto relative">
           {/* Single Vertical Line */}
-          <div className="absolute left-[200px] top-0 bottom-0 w-[1px] bg-gradient-to-b from-border/0 via-border to-border/0"></div>
+          <div className="absolute left-[200px] top-0 bottom-0 w-[1px] bg-border"></div>
           
           {experiences.map((exp, index) => (
             <div key={index} className="grid grid-cols-[200px_1fr] gap-8 group">

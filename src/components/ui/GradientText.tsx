@@ -8,7 +8,7 @@ interface GradientTextProps {
 export function GradientText({ children, className }: GradientTextProps) {
   return (
     <span className={cn(
-      "bg-gradient-to-r from-primary to-primary/50 bg-clip-text text-transparent",
+      "text-primary dark:text-white drop-shadow-sm hover:drop-shadow transition-all",
       className
     )}>
       {children}

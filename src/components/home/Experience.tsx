@@ -23,27 +23,14 @@ function calculateDuration(period: string): string {
   const startDate = new Date(start);
   const endDate = end === "Present" ? new Date() : new Date(end);
   
-  // Get difference in months
-  const diffYears = endDate.getFullYear() - startDate.getFullYear();
-  const diffMonths = endDate.getMonth() - startDate.getMonth();
-  
-  // Total months accounting for year difference
-  let months = diffMonths + diffYears * 12;
-  
-  // Adjust for partial months
-  if (endDate.getDate() < startDate.getDate()) {
-    months--;
-  }
+  const months = (endDate.getFullYear() - startDate.getFullYear()) * 12 
+    + (endDate.getMonth() - startDate.getMonth());
   
   const years = Math.floor(months / 12);
   const remainingMonths = months % 12;
   
-  if (years === 0) {
-    return `${remainingMonths}mo`;
-  }
-  
-  return remainingMonths === 0 
-    ? `${years}yr`
+  return years === 0 ? `${remainingMonths}mo` 
+    : remainingMonths === 0 ? `${years}yr` 
     : `${years}yr ${remainingMonths}mo`;
 }
 
@@ -79,7 +66,7 @@ const experiences: Experience[] = [
     description: [
       "Technical Product Associate on the Data Delivery team, working on Data Lens (formerly COBRA) our Data Publishing and Scoring initiative - the enterprise metadata management and data quality scoring application responsible for all JPMC data",
       "Drive continuous data modernization efforts to make the firm's data more Findable, Accessible, Interoperable, and Reusable (FAIR principles)",
-      "Design and implement solutions for metadata management across relational and graph databases to enhance data discovery and quality assessment. Leveraged knowledge graphs to create various recomendation engines to increase user efficiency 10x or more",
+      "Design and implement solutions for metadata management across relational and graph databases to enhance data discovery and quality assessment. Leveraged knowledge graphs to create recommendation engines to increase user efficiency",
       "Develop and maintain automated workflows for data quality scoring and reporting using Alteryx, Python, SQL, and Tableau",
     ],
     technologies: ["AWS", "Python", "RDF - Resource Description Framework", "Alteryx", "Tableau", "SQL"],

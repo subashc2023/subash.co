@@ -81,7 +81,6 @@ const experiences: Experience[] = [
       "Drive continuous data modernization efforts to make the firm's data more Findable, Accessible, Interoperable, and Reusable (FAIR principles)",
       "Design and implement solutions for metadata management across relational and graph databases to enhance data discovery and quality assessment. Leveraged knowledge graphs to create various recomendation engines to increase user efficiency 10x or more",
       "Develop and maintain automated workflows for data quality scoring and reporting using Alteryx, Python, SQL, and Tableau",
-      "Doubled our data store from 150k to 280k by onboarding First Republic Bank. Implemented many custom solutions to allow the ingestion and transformation of their data to be done more quickly and efficiently",
     ],
     technologies: ["AWS", "Python", "RDF - Resource Description Framework", "Alteryx", "Tableau", "SQL"],
     logo: "/companies/jpmorganchase_logo.jpeg"
